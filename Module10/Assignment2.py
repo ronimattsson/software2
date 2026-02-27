@@ -1,6 +1,3 @@
-from poetry.console.commands import self
-
-
 class Elevator:
     def __init__(self, low, high):
         self.current_floor = int(low)
