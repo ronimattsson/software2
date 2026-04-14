@@ -1,4 +1,4 @@
-const amount = 5
+const amount = 6
 let dogs = []
 for (let i = 0; i < amount; i++) {
     dogs.push(prompt(`Name of dog${i+1}`))
