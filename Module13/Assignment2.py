@@ -1,4 +1,6 @@
 from flask import Flask, request
+from flask_cors import CORS
+import json
 import mysql.connector
 DBUSER = 'root'
 DBPASS = ''
@@ -24,14 +26,17 @@ def get_airport(icao):
     return result
 
 app = Flask(__name__)
-@app.route('/kenttä/<icao>')
-def kenttä(icao):
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
+@app.route('/airport/<icao>')
+def airport(icao):
     port = get_airport(icao)
     result = {
         "ICAO": icao,
         "Name" : port["name"],
         "Municipality" : port["municipality"]
     }
-    return result
+    print(json.dumps(result))
+    return json.dumps(result)
 
 app.run(use_reloader=True, host='127.0.0.1', port=3000)
